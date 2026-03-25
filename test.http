@@ -1,0 +1,83 @@
+// Posts
+
+###
+GET http://localhost:3000/posts
+
+
+###
+GET http://localhost:3000/posts/69c15c365778a9537f5debc4
+
+###
+POST http://localhost:3000/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YzI3ZTE1YmY0ZWFhNjhhMDkxODc0OSIsImVtYWlsIjoiaXZhbjJAbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NDQyOTExMiwiZXhwIjoxNzc1MDMzOTEyfQ.ET4DfEIHtTsJsUW84HngFUPVqmvTMHF4FhWTI3HsyBM
+
+{
+    "title": "Post about Node.js_2.0",
+    "content": "Node.js had been awesome yet!",
+    "author": "69c15c0c7f218c1443911416",
+    "category": "69c1b5738cbe72bd0374c1d5"
+}
+
+###
+PATCH http://localhost:3000/posts/69c15c365778a9537f5debc4
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YzI3ZTE1YmY0ZWFhNjhhMDkxODc0OSIsImVtYWlsIjoiaXZhbjJAbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NDQyOTExMiwiZXhwIjoxNzc1MDMzOTEyfQ.ET4DfEIHtTsJsUW84HngFUPVqmvTMHF4FhWTI3HsyBM
+
+{
+    "title": "My second edit"
+}
+
+###
+DELETE  http://localhost:3000/posts/69c15d145778a9537f5debca
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YzNhNTVmMWI3YzQwNjQ4ZmNlNmVlYiIsImVtYWlsIjoiaXZhbjRAbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NzQ0MzAwMDIsImV4cCI6MTc3NTAzNDgwMn0.RmeKWcbNsBZT7UVzdUIebegPL9QdtHCuAYnfQ07Py4I
+
+
+
+
+
+
+
+// Categories
+
+### 
+
+GET http://localhost:3000/categories
+
+###
+GET http://localhost:3000/categories/69c1b5738cbe72bd0374c1d5/posts
+
+###
+POST http://localhost:3000/categories
+Content-Type: application/json
+
+{
+    "name": "Node.js"
+}
+
+###
+DELETE http://localhost:3000/categories/69c1b5738cbe72bd0374c1d5
+
+
+
+/// Auth
+
+###
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+    "name": "IvanBoss",
+    "email": "ivan4@mail.com",
+    "password": "password123",
+    "role": "admin"
+}
+
+###
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "email": "ivan4@mail.com",
+    "password": "password123"
+}

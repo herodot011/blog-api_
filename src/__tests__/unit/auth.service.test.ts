@@ -11,7 +11,7 @@ jest.mock('../../repositories/userRepository');
 describe('authService', () => {
     beforeEach(() => {
         jest.clearAllMocks();
-    })
+    });
 
     describe('register', () => {
         const users = [ 

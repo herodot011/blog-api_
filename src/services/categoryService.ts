@@ -14,9 +14,3 @@ export const remove = async (id: string) => {
     if(!deleted) throw new AppError('Category not found', 404);
     return deleted;
 }
-
-export const findByCategory = async (id: string) => {
-    const posts = await categoryRepository.findByCategory(id);
-    if(!posts) throw new AppError('Posts by category not found', 404);
-    return posts;
-}

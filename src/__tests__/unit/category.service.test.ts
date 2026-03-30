@@ -1,8 +1,12 @@
 import AppError from "../../utils/AppError";
 import * as categoryService from '../../services/categoryService';
+import * as postService from '../../services/postService';
+
+import * as postRepository from '../../repositories/postRepository';
 import * as categoryRepository from '../../repositories/categoryRepository';
 
 jest.mock('../../repositories/categoryRepository');
+jest.mock('../../repositories/postRepository');
 
 describe('categoryService', () => {
     beforeEach(() => {
@@ -95,19 +99,19 @@ describe('categoryService', () => {
                 }
             ];
 
-            (categoryRepository.findByCategory as jest.Mock).mockResolvedValue(foundedPosts);
+            (postRepository.findByCategory as jest.Mock).mockResolvedValue(foundedPosts);
 
-            const result = await categoryService.findByCategory('1234');
+            const result = await postService.findByCategory('1234');
 
-            expect(categoryRepository.findByCategory).toHaveBeenCalledWith('1234');
+            expect(postRepository.findByCategory).toHaveBeenCalledWith('1234');
             expect(result).toEqual(foundedPosts);
         })
 
         it('should throw error if posts by category not found', async() => {
-            (categoryRepository.findByCategory as jest.Mock).mockResolvedValue(null);
+            (postRepository.findByCategory as jest.Mock).mockResolvedValue(null);
 
-            await expect(categoryService.findByCategory('123456')).rejects.toThrow(AppError);
-            await expect(categoryService.findByCategory('123456')).rejects.toMatchObject({
+            await expect(postService.findByCategory('123456')).rejects.toThrow(AppError);
+            await expect(postService.findByCategory('123456')).rejects.toMatchObject({
                 statusCode: 404,
                 message: 'Posts by category not found'
             })

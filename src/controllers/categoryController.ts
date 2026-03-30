@@ -1,10 +1,17 @@
 import { Request, Response } from 'express';
 import * as categoryService from '../services/categoryService';
+import * as postService from '../services/postService';
 import catchAsync from '../utils/catchAsync';
 
 export const getAllCategories = catchAsync(async (req: Request, res: Response) => {
     const categories = await categoryService.getAll();
     res.json(categories);
+})
+
+export const getPostsByCategory = catchAsync(async (req: Request, res: Response) => {
+    const id = req.params.id as string;
+    const posts = await postService.findByCategory(id);
+    res.json(posts);
 })
 
 export const createCategory = catchAsync(async (req: Request, res: Response) => {
@@ -16,10 +23,4 @@ export const deleteCategory = catchAsync(async (req: Request, res: Response) => 
     const id = req.params.id as string;
     await categoryService.remove(id);
     res.json({message: 'Category deleted successfully' });
-})
-
-export const getPostsByCategory = catchAsync(async (req: Request, res: Response) => {
-    const id = req.params.id as string;
-    const posts = await categoryService.findByCategory(id);
-    res.json(posts);
 })

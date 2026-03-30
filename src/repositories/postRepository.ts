@@ -24,3 +24,8 @@ export const remove = async (id: string) => {
     return await Post.findByIdAndDelete(id);
 }
 
+export const findByCategory = async(id: string) => {
+    return await Post.find({ category: id })
+        .populate('author', 'name email')
+        .populate('category', 'name');
+}

@@ -49,7 +49,7 @@ describe('GET /categories/id/posts', () => {
             await request(app)
                 .post('/posts')
                 .set('Authorization', `Bearer ${token}`)
-                .send({ title: 'Test', content: 'Content', category: 'category.body._id', author: userId });
+                .send({ title: 'Test', content: 'Content', category: 'category.body.    _id', author: userId });
         }
 
         const res = await request(app).get(`/categories/${ category.body._id }/posts`);

@@ -2,6 +2,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import * as userRepository from '../repositories/userRepository';
 import AppError from '../utils/AppError';
+import { JWT_EXPIRES_IN, SALT_ROUNDS } from '../config/constants';
 
 export const register = async (data: any) => {
     const { name, email, password } = data;
@@ -29,7 +30,7 @@ export const login = async (data: any) => {
     const token = jwt.sign(
         { id: user._id, email: user.email, role: user.role},
         process.env.JWT_SECRET as string,
-        { expiresIn: '7d' }
+        { expiresIn: JWT_EXPIRES_IN }
     );
     
     return { token };

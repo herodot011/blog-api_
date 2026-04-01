@@ -68,9 +68,8 @@ Content-Type: application/json
 
 {
     "name": "IvanBoss",
-    "email": "ivan4@mail.com",
-    "password": "password123",
-    "role": "admin"
+    "email": "notemails",
+    "password": "123"
 }
 
 ###

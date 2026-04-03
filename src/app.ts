@@ -1,6 +1,8 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
+import helmet from 'helmet';
+
 import express from 'express';
 import postsRouter from './routes/posts';
 import categoriesRouter from './routes/categories';
@@ -14,6 +16,7 @@ import './models/category';
 
 const app = express();
 app.use(express.json());
+app.use(helmet());
 
 app.use('/posts', postsRouter);
 app.use('/categories', categoriesRouter);
